@@ -1,4 +1,70 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Game Portal</title>
+  <style>
+    body{font-family:system-ui,Arial;margin:0;background:#0f1722;color:#e6eef8}
+    header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:#071028}
+    .logo{font-weight:700}
+    .search {max-width:420px; width:100%}
+    input[type="search"]{width:100%;padding:10px;border-radius:8px;border:1px solid #223244;background:#0a1624;color:inherit}
+    main{padding:20px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+    .card{background:#0b1a2b;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(2,6,23,.6);cursor:pointer;text-decoration:none;color:inherit;display:block}
+    .thumb{height:120px;object-fit:cover;width:100%;display:block}
+    .meta{padding:10px}
+    .meta h3{margin:0;font-size:16px}
+    .meta p{margin:6px 0 0;font-size:13px;opacity:.8}
+    footer{padding:24px;text-align:center;opacity:.7}
+    @media(max-width:520px){.thumb{height:100px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">My Game Portal</div>
+    <div style="flex:1;max-width:640px;margin-left:24px">
+      <form class="search" onsubmit="return false">
+        <input id="q" type="search" placeholder="Search games..." oninput="filter()" />
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid" id="games">
+      <!-- Sample game cards -->
+      <a class="card" href="https://example.com" target="_blank">
+        <img class="thumb" src="https://picsum.photos/seed/game1/600/400" alt="Game 1">
+        <div class="meta"><h3>Sample Game 1</h3><p>Click to play → opens in new tab</p></div>
+      </a>
+
+      <a class="card" href="https://example.com" target="_blank">
+        <img class="thumb" src="https://picsum.photos/seed/game2/600/400" alt="Game 2">
+        <div class="meta"><h3>Sample Game 2</h3><p>Embed or external link</p></div>
+      </a>
+
+      <a class="card" href="https://example.com" target="_blank">
+        <img class="thumb" src="https://picsum.photos/seed/game3/600/400" alt="Game 3">
+        <div class="meta"><h3>Sample Game 3</h3><p>Replace link with your game</p></div>
+      </a>
+    </div>
+  </main>
+
+  <footer>Made with ❤ — Replace sample cards with your games.</footer>
+
+  <script>
+    function filter(){
+      const q = document.getElementById('q').value.toLowerCase().trim()
+      const cards = document.querySelectorAll('#games .card')
+      cards.forEach(c=>{
+        const title = c.querySelector('h3').innerText.toLowerCase()
+        c.style.display = title.includes(q) ? '' : 'none'
+      })
+    }
+  </script>
+</body>
+</html>
 
 
 
